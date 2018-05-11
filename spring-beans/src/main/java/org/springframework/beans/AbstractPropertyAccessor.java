@@ -33,6 +33,7 @@ import java.util.Map;
  */
 public abstract class AbstractPropertyAccessor extends TypeConverterSupport implements ConfigurablePropertyAccessor {
 
+
 	private boolean extractOldValueForEditor = false;
 
 
