@@ -11,7 +11,7 @@ buildscript {
 }
 
 plugins {
-	id "org.sonarqube" version "1.1"
+	id "org.sonarqube" version "2.6.1"
 }
 
 ext {
@@ -475,6 +475,7 @@ project("spring-context") {
 	dependencies {
 		compile(project(":spring-aop"))
 		compile(project(":spring-beans"))
+		compile(project(":spring-beans-groovy"))
 		compile(project(":spring-core"))
 		compile(project(":spring-expression"))
 		compile(files(project(":spring-core").cglibRepackJar))
