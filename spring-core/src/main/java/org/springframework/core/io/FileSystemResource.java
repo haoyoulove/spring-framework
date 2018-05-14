@@ -36,6 +36,8 @@ import org.springframework.util.StringUtils;
  * @author Juergen Hoeller
  * @since 28.12.2003
  * @see java.io.File
+ *
+ * 直接使用FileInputStream对文件实例化
  */
 public class FileSystemResource extends AbstractResource implements WritableResource {
 

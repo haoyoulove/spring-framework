@@ -65,6 +65,8 @@ public class XmlBeanFactory extends DefaultListableBeanFactory {
 	 * which must be parsable using DOM.
 	 * @param resource XML resource to load bean definitions from
 	 * @throws BeansException in case of loading or parsing errors
+	 *
+	 * 通过找到资源对应的resource资源实例，传入xmlBeanFactory来解析
 	 */
 	public XmlBeanFactory(Resource resource) throws BeansException {
 		this(resource, null);

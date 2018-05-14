@@ -39,6 +39,9 @@ import org.springframework.util.StringUtils;
  * @since 28.12.2003
  * @see ClassLoader#getResourceAsStream(String)
  * @see Class#getResourceAsStream(String)
+ *
+ * 通过class或者classLoader提供的底层方法调用
+ *
  */
 public class ClassPathResource extends AbstractFileResolvingResource {
 
@@ -145,6 +148,7 @@ public class ClassPathResource extends AbstractFileResolvingResource {
 		}
 		else if (this.classLoader != null) {
 			return this.classLoader.getResource(this.path);
+
 		}
 		else {
 			return ClassLoader.getSystemResource(this.path);
