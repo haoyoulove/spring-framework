@@ -112,6 +112,8 @@ import org.springframework.util.StringUtils;
  * @see StaticListableBeanFactory
  * @see PropertiesBeanDefinitionReader
  * @see org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+ *
+ * Spring 注册和加载bean的默认实现
  */
 @SuppressWarnings("serial")
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory
