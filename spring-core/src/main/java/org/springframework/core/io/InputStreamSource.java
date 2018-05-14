@@ -51,7 +51,7 @@ public interface InputStreamSource {
 	 * @throws java.io.FileNotFoundException if the underlying resource doesn't exist
 	 * @throws IOException if the content stream could not be opened
 	 *
-	 * 返回一个新的InputStream对象
+	 * 返回一个新的InputStream对象,（有可能是File,ClassPath下的资源和Byte Array）
 	 */
 	InputStream getInputStream() throws IOException;
 
