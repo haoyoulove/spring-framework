@@ -63,6 +63,8 @@ public class DefaultDocumentLoader implements DocumentLoader {
 	/**
 	 * Load the {@link Document} at the supplied {@link InputSource} using the standard JAXP-configured
 	 * XML parser.
+	 *
+	 * 通过SAX解析XML文档。（JAVA自带）
 	 */
 	@Override
 	public Document loadDocument(InputSource inputSource, EntityResolver entityResolver,

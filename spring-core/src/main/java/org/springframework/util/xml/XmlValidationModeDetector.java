@@ -74,6 +74,7 @@ public class XmlValidationModeDetector {
 
 	/**
 	 * Indicates whether or not the current parse position is inside an XML comment.
+	 * 指示当前分析位置是否在XML注释中。
 	 */
 	private boolean inComment;
 
@@ -92,11 +93,17 @@ public class XmlValidationModeDetector {
 		try {
 			boolean isDtdValidated = false;
 			String content;
+			// 一行一行的读取
 			while ((content = reader.readLine()) != null) {
+
 				content = consumeCommentTokens(content);
+
+				// 如果读取的行是空的或者是注释略过
 				if (this.inComment || !StringUtils.hasText(content)) {
 					continue;
 				}
+				// 读取到<开始符号，验证模式一定会在开始符号之前
+				// dtd包含 DOCTYPE字符串
 				if (hasDoctype(content)) {
 					isDtdValidated = true;
 					break;
@@ -142,9 +149,10 @@ public class XmlValidationModeDetector {
 
 	/**
 	 * Consumes all the leading comment data in the given String and returns the remaining content, which
-	 * may be empty since the supplied content might be all comment data. For our purposes it is only important
-	 * to strip leading comment content on a line since the first piece of non comment content will be either
-	 * the DOCTYPE declaration or the root element of the document.
+	  may be empty since the supplied content might be all comment data. For our purposes it is only important
+	  to strip leading comment content on a line since the first piece of non comment content will be either
+	  the DOCTYPE declaration or the root element of the document.
+	 检验文档中是否属于注释，并且过滤数据
 	 */
 	private String consumeCommentTokens(String line) {
 		if (!line.contains(START_COMMENT) && !line.contains(END_COMMENT)) {
