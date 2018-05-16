@@ -512,15 +512,22 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	 * @see BeanDefinitionDocumentReader#registerBeanDefinitions
 	 */
 	public int registerBeanDefinitions(Document doc, Resource resource) throws BeanDefinitionStoreException {
+		// BeanDefinitionDocumentReader用来读取Document并且注册BeanDefinition (DefaultBeanDefinitionDocumentReader)
 		BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
+		//实例化BeanDefinitionReader的时候传入BeanDefinitionRegistry，默认使用的是DefaultListableBeanFactory的子类
+		// DefaultListableBeanFactory类型 存储的BeanDefinition个数
 		int countBefore = getRegistry().getBeanDefinitionCount();
+
+		// 使用XmlReaderContext来解析和读取
+		//加载和注册bean
 		documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
+
+		// 本次加载的BeanDefinition的个数
 		return getRegistry().getBeanDefinitionCount() - countBefore;
 	}
 
 	/**
-	 * Create the {@link BeanDefinitionDocumentReader} to use for actually
-	 * reading bean definitions from an XML document.
+	 * Create the {@link BeanDefinitionDocumentReader} to use for actually reading bean definitions from an XML document.
 	 * <p>The default implementation instantiates the specified "documentReaderClass".
 	 * @see #setDocumentReaderClass
 	 */

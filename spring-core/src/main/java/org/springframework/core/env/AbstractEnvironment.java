@@ -227,9 +227,12 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 
 	/**
 	 * Return the set of active profiles as explicitly set through
-	 * {@link #setActiveProfiles} or if the current set of active profiles
-	 * is empty, check for the presence of the {@value #ACTIVE_PROFILES_PROPERTY_NAME}
-	 * property and assign its value to the set of active profiles.
+	 {@link #setActiveProfiles} or if the current set of active profiles
+	 is empty, check for the presence of the {@value #ACTIVE_PROFILES_PROPERTY_NAME}
+	  property and assign its value to the set of active profiles.
+
+	 通过{@link #setActiveProfiles}显式设置返回一组活动配置文件，
+	 或者如果当前一组活动配置文件为空，请检查是否存在{@value #ACTIVE_PROFILES_PROPERTY_NAME}属性并将其值分配给一组活动配置文件。
 	 * @see #getActiveProfiles()
 	 * @see #ACTIVE_PROFILES_PROPERTY_NAME
 	 */
@@ -321,9 +324,16 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 		}
 	}
 
+
+	/**
+	 * 检查profile是否符合环境变量定义的，不定义则不会浪费性能去解析
+	 * @param profiles
+	 * @return
+	 */
 	@Override
 	public boolean acceptsProfiles(String... profiles) {
 		Assert.notEmpty(profiles, "Must specify at least one profile");
+
 		for (String profile : profiles) {
 			if (StringUtils.hasLength(profile) && profile.charAt(0) == '!') {
 				if (!isProfileActive(profile.substring(1))) {
@@ -340,7 +350,9 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 	/**
 	 * Return whether the given profile is active, or if active profiles are empty
 	 * whether the profile should be active by default.
+	 * 返回给定的配置文件是否处于活动状态，或者活动的配置文件是否为空*默认情况下是否应激活配置文件。
 	 * @throws IllegalArgumentException per {@link #validateProfile(String)}
+	 *
 	 */
 	protected boolean isProfileActive(String profile) {
 		validateProfile(profile);

@@ -76,6 +76,8 @@ public abstract class AbstractBeanDefinitionReader implements EnvironmentCapable
 	 * in the form of a BeanDefinitionRegistry
 	 * @see #setResourceLoader
 	 * @see #setEnvironment
+	 *
+	 * 使用new XmlBeanDefinitionReader(this)的时候就已经要构造这个类了
 	 */
 	protected AbstractBeanDefinitionReader(BeanDefinitionRegistry registry) {
 		Assert.notNull(registry, "BeanDefinitionRegistry must not be null");
