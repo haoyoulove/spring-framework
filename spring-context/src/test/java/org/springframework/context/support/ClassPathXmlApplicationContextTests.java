@@ -322,7 +322,7 @@ public class ClassPathXmlApplicationContextTests {
 		assertEquals(1, beansOfType.size());
 		assertSame(myMessageSource, beansOfType.values().iterator().next());
 	}
-
+	// 加载bean
 	@Test
 	public void testResourceAndInputStream() throws IOException {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(RESOURCE_CONTEXT) {
