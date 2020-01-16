@@ -77,6 +77,7 @@ public class AspectJAutoProxyCreatorTests {
 
 	@Test
 	public void testAspectsAreApplied() {
+
 		ClassPathXmlApplicationContext bf = newContext("aspects.xml");
 
 		ITestBean tb = (ITestBean) bf.getBean("adrian");

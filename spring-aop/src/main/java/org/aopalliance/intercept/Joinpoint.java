@@ -53,6 +53,7 @@ public interface Joinpoint {
 	 * <p>For instance, the target object for an invocation.
 	 * @return the object (can be null if the accessible object is static)
 	 */
+	/** 用于执行拦截器链中的下一个拦截器逻辑 */
 	Object getThis();
 
 	/**
