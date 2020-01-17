@@ -60,6 +60,7 @@ public abstract class AspectJProxyUtils {
 			 * 至于为什么这样做，我会在后续的文章中进行说明
 			 */
 			if (foundAspectJAdvice && !advisors.contains(ExposeInvocationInterceptor.ADVISOR)) {
+				// 向通知器列表中添加 ExposeInvocationInterceptor.ADVISOR
 				advisors.add(0, ExposeInvocationInterceptor.ADVISOR);
 				return true;
 			}
